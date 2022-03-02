@@ -1,1 +1,1263 @@
+#include <iostream>
+#include <stdlib.h>
+#include<iomanip>
+#include <time.h>
+#include <fstream>
+#include <string>
+#include <windows.h>
+#include <vector>
+#include <cstdio>
+using namespace std;
 
+const int V = 1;//max array size
+
+const int SUPER = 5;//кол-во букв в питье
+const int PUPER = 100;//максимальное рандомное число в еде
+const int CLASSS = 2;
+const int MOLODEJ = 10;
+const int end_of_love=-1;//характеристика смерти
+
+class OnlyProtectedDOG
+{
+protected:
+	string dog_size;
+	string dog_color;
+public:
+
+protected:
+	void set_dog_size();
+	void set_dog_color();
+	void dog_info();
+};
+void OnlyProtectedDOG::dog_info()
+{
+	cout << "\n "<< dog_size << " " << dog_color << "\n";;
+}
+void OnlyProtectedDOG::set_dog_color()
+{
+	cout << " Write dog color ";
+	cin >> dog_color;
+}
+void OnlyProtectedDOG::set_dog_size()
+{
+	cout << " Write dog size ";
+	cin >> dog_size;
+}
+
+
+class OnlyProtectedDOG_with_owner : protected OnlyProtectedDOG
+{
+protected:
+	string owner_dog;
+	string dog_name;
+	void set_Dog_name();
+	void set_owner_dog();
+	void dog_info();
+};
+
+void OnlyProtectedDOG_with_owner::dog_info()
+{
+	cout << "\n " << owner_dog << " " << dog_name << " " << dog_size << " " << dog_color << "\n";;
+}
+void OnlyProtectedDOG_with_owner::set_owner_dog()
+{
+	cout << " Write dog owner ";
+	cin >> owner_dog;
+}
+void OnlyProtectedDOG_with_owner::set_Dog_name()
+{
+	cout << "\n Write dog name ";
+	cin >> dog_name;
+}
+
+class OnlyPravateDOG
+{
+private:
+	string owner_dog;
+	string dog_name;
+	string dog_size;
+	string dog_color;
+public:
+	OnlyPravateDOG()
+	{
+		set_Dog_name();
+		set_owner_dog();
+		set_dog_size();
+		set_dog_color();
+		dog_info();
+	}
+private:
+	void set_Dog_name();
+	void set_owner_dog();
+	void set_dog_size();
+	void set_dog_color();
+	void dog_info();
+};
+void OnlyPravateDOG::dog_info()
+{
+	cout << "\n " << owner_dog << " " << dog_name << " " << dog_size << " " << dog_color << "\n";;
+}
+void OnlyPravateDOG::set_dog_color()
+{
+	cout << " Write dog color ";
+	cin >> dog_color;
+}
+void OnlyPravateDOG::set_dog_size()
+{
+	cout << " Write dog size ";
+	cin >> dog_size;
+}
+void OnlyPravateDOG::set_owner_dog()
+{
+	cout << " Write dog owner ";
+	cin >> owner_dog;
+}
+void OnlyPravateDOG::set_Dog_name()
+{
+	cout << "\n Write dog name ";
+	cin >> dog_name;
+}
+class OnlyPravateDOG_with_owner
+{
+private:
+	string dog_size;
+	string dog_color;
+public:
+	OnlyPravateDOG_with_owner()
+	{
+		set_dog_size();
+		set_dog_color();
+		dog_info();
+	}
+private:
+	void dog_info();
+	void set_dog_size();
+	void set_dog_color();
+
+};
+void OnlyPravateDOG_with_owner::set_dog_color()
+{
+	cout << " Write dog color ";
+	cin >> dog_color;
+}
+void OnlyPravateDOG_with_owner::set_dog_size()
+{
+	cout << " Write dog size ";
+	cin >> dog_size;
+}
+void OnlyPravateDOG_with_owner::dog_info()
+{
+	cout << "\n " << dog_size << " " << dog_color << "\n";
+}
+
+
+
+class DOG
+{
+private:
+	string owner_dog;
+	
+public:
+	string dog_name;
+	string dog_size;
+	string dog_color;
+
+	void set_Dog_name();
+	void set_owner_dog();
+	void set_dog_size();
+	void set_dog_color();
+	void dog_info();
+};
+void DOG::dog_info()
+{
+	cout << "\n " << owner_dog << " " << dog_name << " " << dog_size << " " << dog_color << "\n";;
+}
+void DOG::set_dog_color()
+{
+	cout << " Write dog color ";
+	cin >> dog_color;
+}
+void DOG::set_dog_size()
+{
+	cout << " Write dog size ";
+	cin >> dog_size;
+}
+void DOG::set_owner_dog()
+{
+	cout << " Write dog owner ";
+	cin >> owner_dog;
+}
+void DOG::set_Dog_name()
+{
+	cout << "\n Write dog name ";
+	cin >> dog_name;
+}
+class DOG_with_owner: public DOG
+{
+public:
+	void stranger();
+};
+void DOG_with_owner::stranger()
+{
+	cout << "\n "<< dog_size << " " << dog_color << "\n";
+}
+class Tamogochi
+{
+public:
+	string DOG_name="-";
+	string DOG_size="-";
+	float DOG_age=0;
+	string DOG_color="-";
+public:
+
+	Tamogochi()
+	{
+		srand(time(NULL));
+		int i = 0;
+		char chouse;
+		bool food=false,aqua=false,game=false;
+		int food_counter= rand() % (CLASSS + 1), aqua_counter= rand() % (CLASSS + 1), game_counter= rand() % (CLASSS+1);
+		int counter=0;
+		while (i != 5)
+		{
+			if (counter == 2)
+			{
+				int sad;
+				sad = rand()%2;
+				switch (sad)
+				{
+				case 0:
+				{
+					food_counter--;
+					counter = 0;
+					break;
+				}
+				case 1:
+				{
+					aqua_counter--;
+					counter = 0;
+					break;
+				}
+				case 2:
+				{
+					game_counter--;
+					counter = 0;
+					break;
+				}
+				
+				}
+			}
+			system("cls");
+			Tamogochi::menuDOG();
+			cout << "=== Вода "<<aqua_counter<<" ===Еда "<<food_counter<<" ===Настроение "<<game_counter<<"===\n";
+			cin >> chouse;
+			if ((chouse >= '0') && (chouse <= '9'))
+			{
+				i = chouse - '0';
+				switch (i)
+				{
+				case 1:
+				{
+					cin.ignore();
+					cout << "\nНапишите породу собаки - ";
+					getline(cin, DOG_name);
+					cout << "\nНапишите размер собаки (Большой, Средний, Маленький)- ";
+					getline(cin, DOG_size);
+					cout << "\nНапишите возраст собаки (Если число дробное,то используйте точку) - ";
+					cin >> DOG_age;
+					cin.ignore();
+					cout << "\nНапишите цвет собаки - ";
+					getline(cin, DOG_color);
+					cout << endl << "\n Собака создана";
+					
+					break;
+				}
+				case 2:
+				{
+					game = Tamogochi::dog_playing();
+					
+					if (game == true)
+						game_counter++;
+					counter++;
+					break;
+				}
+				case 3:
+				{
+					food = Tamogochi::dog_eat();
+					
+					if (food == true)
+						food_counter++;
+					counter++;
+					break;
+				}
+				case 4:
+				{
+					aqua = Tamogochi::dog_drinking();
+					
+					if (aqua == true)
+						aqua_counter++;
+					counter++;
+					break;
+				}
+				case 5:
+				{
+					return;
+					break;
+				}
+				default:
+				{
+					break;
+				}
+				}
+				if (food_counter == CLASSS && aqua_counter == CLASSS && game_counter == CLASSS)
+				{
+					DOG_age = DOG_age + 0.2;
+					food_counter = rand() % (CLASSS + 1); aqua_counter = rand() % (CLASSS + 1); game_counter = rand() % (CLASSS + 1);
+				}
+				if (food_counter == end_of_love || aqua_counter == end_of_love || game_counter == end_of_love)
+				{
+					cout << "===========================Ваш питомец умер===========================\n";
+					return;
+					system("shutdown");
+				}
+			}
+			system("pause");
+		}
+	};
+
+	int DOG();
+	void menuDOG();
+	int dog_eat();
+	int dog_drinking();
+	int dog_playing();
+};
+
+struct Planets
+{
+	string NameP;
+	int weight;
+	int life;
+	long int energy;
+};
+
+int Tamogochi::DOG()
+{
+	return 0;
+}
+int Tamogochi::dog_eat()
+{
+	srand(time(NULL));
+	bool YN = false;
+	char Tab[SUPER];
+	char Bat[SUPER];
+
+	for (int i = 0; i < SUPER; i++)
+	{
+		if (rand() % 2 == 0)// capital or small word
+		{
+			Tab[i] = 'A' + (rand() % 26);
+		}
+		else
+		{
+			Tab[i] = 'a' + (rand() % 26);
+		}
+	}
+	for (int i = 0; i < SUPER; i++)
+	{
+		cout << Tab[i];
+	}
+	cout << "\n";
+	for (int i = 0; i < SUPER; i++)
+	{
+		cin >> Bat[i];
+		if (Tab[i] != Bat[i])
+		{
+			cout << "Неправильно, " << DOG_name << " не поел\n";
+			return YN;
+		}
+	}
+	YN = true;
+	return YN;
+}
+int Tamogochi::dog_drinking()
+{
+	srand(time(NULL));
+	bool YN = false;
+	int a, b, c;
+	a = rand()%PUPER;
+	b = rand()%PUPER;
+	cout << "Сколько воды в миске?\n";
+	cout << a << "+"<<b << "=";
+	cin >> c;
+	if((a+b)!=c)
+		{
+		cout << "Неправильно, " << DOG_name << " не попил\n";
+		return YN;
+		}
+	YN = true;
+	return YN;
+}
+int Tamogochi::dog_playing()
+{
+	srand(time(NULL));
+	bool YN = false;
+	char Tab[MOLODEJ];
+	char Bat[MOLODEJ];
+
+	for (int i = 0; i < MOLODEJ; i++)
+	{
+			Tab[i] ='0' + (rand() % 10);
+	}
+	for (int i = 0; i < MOLODEJ; i++)
+	{
+		cout << Tab[i];
+	}
+	cout << "\n";
+	for (int i = 0; i < MOLODEJ; i++)
+	{
+		cin >> Bat[i];
+		if (Tab[i] != Bat[i])
+		{
+			cout << "Неправильно, " << DOG_name << " не поиграл\n";
+			return YN;
+		}
+	}
+	YN = true;
+	return YN;
+}
+void Tamogochi::menuDOG()
+{
+	cout << "======================================================================\n";
+	cout << "===MENU======MENU======MENU======MENU======MENU======MENU======MENU===\n";
+	cout << "=============================Tamogochi================================\n";
+	cout << "================  1. Создать питомца  ================================\n";
+	cout << "================  2. Поиграть с питомцем  ============================\n";
+	cout << "================  3. Дать еду питомцу  ===============================\n";
+	cout << "================  4. Дать воду питомцу  ==============================\n";
+	cout << "================  5. Exit  ===========================================\n";
+	cout << "======================================================================\n";
+	cout << "=============================Tamogochi================================\n";
+	cout << "=== Порода " << DOG_name << " ==Размер " << DOG_size << " ==Возраст " << DOG_age << " ==Цвет " << DOG_color << " ===\n";
+	cout << "======================================================================\n";
+}
+
+
+const int MNA = 100;//max number in array
+void printARR(int* array, int W)
+{
+	for (int i = 0; i < W; i++)
+	{
+		cout << setw(5) << *(array + i);
+	}
+	cout << endl;
+}
+void a_b_c(int a, int b,int c)
+{
+	if ((b + c) == (2*a))
+	{
+		if (b == c)
+		{
+			cout << "Все числа равны " << a << " " << b << " " << c << "\n";
+			return;
+		}
+	}
+	if ((b + c) <= (2 * a)) 
+	{
+		if ((a + c)  <= (2 * b))
+		if(a>=b)
+			if (b >= c)
+			{
+				cout << "Среднее число " << b << "\n" << a << " " << b << " " << c << "\n";
+				return;
+			}
+			else
+			{
+				cout << "Среднее число " << c << "\n" << a << " " << c << " " << b << "\n";
+				return;
+			}
+		else
+			if (a >= c)
+			{
+				cout << "Среднее число " << a << "\n" << b << " " << a << " " << c << "\n";
+				return;
+			}
+			else
+			{
+				cout << "Среднее число " << c << "\n" << b << " " << c << " " << a << "\n";
+				return;
+			}
+
+		if ((a + b) <= (2 * c))
+			if(a>=c)
+				if (b >= c)
+				{
+					cout << "Среднее число " << b << "\n" << a << " " << b << " " << c << "\n";
+					return;
+				}
+				else
+				{
+					cout << "Среднее число " << c << "\n" << a << " " << c << " " << b << "\n";
+					return;
+				}
+			else
+				if (a >= b)
+				{
+					cout << "Среднее число " << a << "\n" << c << " " << a << " " << b << "\n";
+					return;
+				}
+				else
+				{
+					cout << "Среднее число " << b << "\n" << c << " " << b << " " << a << "\n";
+					return;
+				}
+	}
+	if ((a + c) <= (2 * b))
+	{
+		if ((b + c) <= (2 * a))
+		if (b >= c)
+			if (a >= c)
+			{
+				cout << "Среднее число " << a << "\n" << b << " " << a << " " << c << "\n";
+				return;
+			}
+			else
+			{
+				cout << "Среднее число " << c << "\n" << b << " " << c << " " << a << "\n";
+				return;
+			}
+		else
+			if (a >= b)
+			{
+				cout << "Среднее число " << a << "\n" << c << " " << a << " " << b << "\n";
+				return;
+			}
+			else
+			{
+				cout << "Среднее число " << b << "\n" << c << " " << b << " " << a << "\n";
+				return;
+			}
+
+		if ((a + b) <= (2 * c))
+			if (b >= c)
+				if (a >= c)
+				{
+					cout << "Среднее число " << a << "\n" << b << " " << a << " " << c << "\n";
+					return;
+				}
+				else
+				{
+					cout << "Среднее число " << c << "\n" << b << " " << c << " " << a << "\n";
+					return;
+				}
+			else
+				if (a >= b)
+				{
+					cout << "Среднее число " << a << "\n" << c << " " << a << " " << b << "\n";
+					return;
+				}
+				else
+				{
+					cout << "Среднее число " << b << "\n" << c << " " << b << " " << a << "\n";
+					return;
+				}
+	}
+	if ((a + b) <= (2 * c))
+	{
+		if ((a + c) <= (2 * b))
+		if (c >= b)
+			if (b >= a)
+			{
+				cout << "Среднее число " << b << "\n" << c << " " << b << " " << a << "\n";
+				return;
+			}
+			else
+			{
+				cout << "Среднее число " << a << "\n" << c << " " << a << " " << b << "\n";
+				return;
+			}
+		else
+			if (c >= a)
+			{
+				cout << "Среднее число " << c << "\n" << b << " " << c << " " << a << "\n";
+				return;
+			}
+			else
+			{
+				cout << "Среднее число " << a << "\n" << b << " " << a << " " << c << "\n";
+				return;
+			}
+
+		if ((c + b) <= (2 * a))
+			if (c >= a)
+				if (b >= a)
+				{
+					cout << "Среднее число " << b << "\n" << c << " " << b << " " << a << "\n";
+					return;
+				}
+				else
+				{
+					cout << "Среднее число " << a << "\n" << c << " " << a << " " << b << "\n";
+					return;
+				}
+			else
+				if (c >= b)
+				{
+					cout << "Среднее число " << c << "\n" << a << " " << c << " " << b << "\n";
+					return;
+				}
+				else
+				{
+					cout << "Среднее число " << b << "\n" << a << " " << b << " " << c << "\n";
+					return;
+				}
+	}
+}
+void buble_sortARRAY_LR(int* arr, int WB)
+{
+	for (int i = 0; i < WB; i++)
+	{
+		for (int j = i + 1; j<WB; j++)
+		{
+			if (*(arr + j) < *(arr + i))
+				swap(*(arr + j), *(arr + i));
+		}
+	}
+}
+void buble_sortARRAY_RL(int* arr, int WB)
+{
+	for (int i = 0; i < WB; i++)
+	{
+		for (int j = i + 1; j < WB; j++)
+		{
+			if (*(arr + j) < *(arr + i))
+				swap(*(arr + j), *(arr + i));
+		}
+	}
+}
+void randArrayINarray(int *arr, int X,int Y)
+{
+	srand(time(NULL));
+	for (int i = 0; i <(X*Y);i++)
+	{
+			*(arr+i) = rand() % MNA;
+	}
+}
+void SwapOneTOtwo_hard(int* array, int a, int b)
+{
+	a--; b--;
+	array[a] = array[a] + array[b];
+	array[b] = array[a] - array[b];
+	array[a] = array[a] - array[b];
+}
+int summARRMinus(int* arr, int W)
+{
+	int m = 0;
+	bool check=false;
+	for (int i = 0; i < W; i++)
+	{
+		if (arr[i] < 0)
+		{
+			m += arr [i];
+			check = true;
+		}
+	}
+	if (check != true)
+	{
+		cout << "\nNo negative numbers found\n";
+	}
+	return m;
+}
+int maxArrayArray(int **array)
+{
+	int max = -MNA - 1;
+	for (int i = 0; i < V; i++)
+	{
+		for (int j = 0; j < V; j++)
+		{
+			if (max < array[i][j])
+				max = array[i][j];
+		}
+	}
+	return max;
+}
+int maxArray(int* array,int V)
+{
+	int max = -MNA - 1;
+	for (int i = 0; i < V; i++)
+	{
+			if (max < array[i])
+				max = array[i];
+
+	}
+	return max;
+}
+int maxArrayCount(int* array, int V)
+{
+	int max = -MNA - 1;
+	int count=0;
+	for (int i = 0; i < V; i++)
+	{
+		if(max == array[i])
+			count++;
+		if (max < array[i])
+		{
+
+			max = array[i];
+			count=1;
+		}
+
+	}
+		cout << "Количество повторяющихся максимальных чисел "<<count<<endl;
+	return max;
+}
+void LastPositive(int* arr, int V)
+{
+	int position,summMin;
+	for (int i=0; i < V; i++)
+	{
+		if (arr[i] > 0)
+			position = i;
+	}
+	summMin=summARRMinus(arr, V);
+	position--;
+	int i = V++;
+	int j = V;
+	for (i,j; i > position; i--,j--)
+	{
+		SwapOneTOtwo_hard(arr, i, j);
+	}
+	arr[position] = summMin;
+}
+int summARRup(int array[V][V])
+{
+	int m=0;
+	for (int i = 0; i < V; i++)
+	{
+		for (int j = 0; j < V; j++)
+		{
+			if (i < j)
+			{
+				m += array[i][j];
+			}
+		}
+	}
+	return m;
+}
+int maxPERline(int array[V][V], int j)
+{
+	int I = 0;
+	for (int i = 0; i < V; i++)
+	{
+		if (array[I][j] < array[i][j])
+			I = i;
+	}
+	return array[I][j];
+}
+void min_max(int* a, int n, int* imax, int* imin) 
+{
+	int max = a[0];
+
+	int min = a[0];
+
+	for (int i = 1; i < n; i++) 
+	{
+		if (a[i] > max)
+		{
+			max = a[i];
+			*imax = i;
+		}
+		if (a[i] < min) 
+		{
+			min = a[i];
+			*imin = i;
+		}
+
+	}
+	// cout<<*imax<<endl;
+	// cout<<*imin<<endl;
+}
+int onetotwo(int twoarray[V][V])
+{
+	int num, v = V - 1;
+	for (int i = 0; i < V; i++)
+	{
+		num = twoarray[0][i];
+		twoarray[0][i] = twoarray[v][i];
+		twoarray[v][i] = num;
+
+	}
+	return twoarray[V][V];
+}
+void SwapOneTOtwo_easy(int twoarray[], int a, int b)
+{
+	a--; b--;
+	int num;
+	num = twoarray[a];
+	twoarray[a] = twoarray[b];
+	twoarray[b] = num;
+}
+
+void printARRinARR(int* arr, int X,int Y)
+{
+	Y = Y * X;
+	int k=0;
+	for (int i = 0; i < Y; i++)
+	{
+			cout << setw(5) << *(arr + i);
+			k++;
+			if (k >= X)
+			{
+				cout << endl;
+				k = 0;
+			}
+	}
+
+	cout <<endl;
+}
+
+int randARR(int arr[V],int W)
+{
+	srand(time(NULL));
+	for (int i = 0; i < W; i++)
+	{
+		arr[i] = rand() % MNA;
+	}
+return arr[W];
+}
+int summARRinARRP(int  *arr)
+{
+	int m = 0;
+	for (int i = 0; i < V; i++)
+	{
+		for (int j = 0; j < V; j++)
+		{
+			m += *(arr + i+j); 
+		}
+	}
+	return m;
+}
+int summARRP(int *arr,int W)
+{
+	int m = 0;
+	for (int i = 0; i < W; i++)
+	{
+				m += *(arr+i);
+	}
+	return m;
+}
+void MoreThanNUMBER(int* a, int X, int Y, int F)
+{
+	int counter = 0;
+	int* summ = new int[X * Y];
+	for (int i = 0; i < (X * Y); i++)
+	{
+		if (*(a + i) > F)
+		{
+			summ[counter] = *(a + i);
+			counter++;
+		}
+	}
+	if (counter != 0)
+	{
+		buble_sortARRAY_LR(summ, counter);
+		cout << "The numbers in the array are large than " << F << "	";
+		printARR(summ, counter);
+	}
+	else
+	{
+		cout << "All numbers in array are smaller than " << F << endl;
+	}
+	delete[] summ;
+}
+void menu()
+{
+	cout << "======================================================================\n";
+	cout << "===MENU======MENU======MENU======MENU======MENU======MENU======MENU===\n";
+	cout << "======================================================================\n";
+	cout << "================  1. View the list of planets  =======================\n";
+	cout << "================  2. Add planet/s to the list  =======================\n";
+	cout << "================  3. Finding planets in the list  ====================\n";
+	cout << "================  4. Deleting planets from the list  =================\n";
+	cout << "================  5. Exit  ===========================================\n";
+	cout << "======================================================================\n";
+}
+void EnteringPlanet(Planets* planet, int B, const char name[])
+{
+	ofstream PlanetList((name), ios::app);
+	int nLine;
+	for (int j = 0; j < B; j++)
+	{
+		cin.ignore();
+		cout << "\nWrite full name of the planet - ";
+		getline(cin, planet[j].NameP);
+		do 
+		{
+			cout << "\nWrite the weight of the planet - ";
+			cin >> planet[j].weight;
+		} while (planet[j].weight < 1);
+			do 
+			{
+				cout << "\nHow much life is on the planet - ";
+				cin >> planet[j].life;
+			}
+			while (planet[j].life < 0);
+		cout << "\nEnergy of planet - ";
+		planet[j].energy = planet[j].weight * planet[j].life * planet[j].life;
+		cout << planet[j].energy << endl;
+		PlanetList << planet[j].NameP << "@" << planet[j].weight << "@" << planet[j].life << "@" << planet[j].energy << '\n';
+		system("pause");
+		system("cls");
+		menu();
+	}
+	PlanetList.close();
+}
+void printline(string line, int lline)
+{
+	for (int l = 0; l < lline; l++)
+	{
+		if (line[l] == '@')
+		{
+			cout << " ";
+			l++;
+		}
+		cout << line[l];
+	}
+	cout << endl;
+}
+void findPlanet(ifstream& PlanetList)
+{
+	if (PlanetList.is_open())
+	{
+		string Fword, line;
+		int lword, Lline, counter, Nothing = 0, wcounter = 0;
+		vector<string> Rightline;
+		cout << "Enter what you what to find - ";
+		cin.ignore();
+		getline(cin, Fword);
+		lword = Fword.length();
+		lword--;
+		while (!PlanetList.eof())
+		{
+			getline(PlanetList, line, '\n');
+			Lline = line.length();
+			if (Lline >= lword)
+				for (int i = 0, j = 0; i < Lline; i++)
+				{
+					if (Fword[j] == line[i])
+					{
+						for (int p; j < lword;)
+						{
+							j++;
+							p = i + j;
+							if (Fword[j] == line[p])
+							{
+								if (j == lword)
+								{
+									wcounter++;
+									printline(line, Lline);
+									Nothing = 1;
+								}
+							}
+							else
+								break;
+						}
+						j++;
+					}
+					j = 0;
+				}
+		}
+		if (Nothing == 0)
+			cout << "\n		Not found\n";
+		PlanetList.close();
+		if (wcounter > 1)
+		{
+			cout << "\nWHATWHATWHATWHATWHATWHATWHATWHAT\n";
+		}
+	}
+	else
+		cout << "File not exist, add planets";
+}
+void deletePlanet(ifstream& PlanetList, const char name[])
+{
+	if (PlanetList.is_open())
+	{
+		string Dword, line;
+		int lword, Lline, counter, Nothing = 0, wcounter = 0, check;
+		vector<string> Rightline;
+		cout << "Enter what you what to delete - ";
+		cin.ignore();
+		getline(cin, Dword);
+		lword = Dword.length();
+		lword--;
+		ofstream PlanetList1("Universe1.txt");
+		while (!PlanetList.eof())
+		{
+			getline(PlanetList, line, '\n');
+			Lline = line.length();
+			check = 0;
+			if (Lline >= lword)
+				for (int i = 0, j = 0; i < Lline; i++)
+				{
+					if (Dword[j] == line[i])
+					{
+						for (int p; j < lword;)
+						{
+							j++;
+							p = i + j;
+							if (Dword[j] == line[p])
+							{
+								if (j == lword)
+								{
+									check++;
+									Nothing = 1;
+								}
+							}
+							else
+								break;
+						}
+						j++;
+					}
+					j = 0;
+				}
+			if (check == 0)
+			{
+				int i;
+				for (i = 0; i < Lline; i++)
+					PlanetList1 << line[i];
+				PlanetList1 << "\n";
+			}
+		}
+		if (wcounter > 1)
+		{
+			cout << "\nWHATWHATWHATWHATWHATWHATWHATWHAT\n";
+		}
+		if (Nothing == 0)
+			cout << "\n		Not found\n";
+		else
+		{
+			PlanetList1.close();
+			PlanetList.close();
+			remove(name);
+			rename("Universe1.txt", name);
+			remove("Universe1.txt");
+		}
+
+	}
+	else
+		cout << "File not exist, add planets";
+}
+int view_file(ifstream& PlanetList, bool ch)
+{
+	if (PlanetList.is_open())
+	{
+		bool nothing = false;
+		while (!PlanetList.eof())
+		{
+			string line;
+			int ln;
+			getline(PlanetList, line, '\n');
+			ln = line.length();
+			for (int i = 0; i < ln; i++)
+			{
+				if (line[i] == '@')
+				{
+					cout << " ";
+					i++;
+				}
+				cout << line[i]; nothing++;
+			}
+
+			cout << endl;
+		}
+		PlanetList.close();
+		if (nothing == 0)
+			cout << "		File empty.	\n";
+	}
+	else
+		cout << "\nUnable to open file, we cant find Planets\n";
+	ch = true;
+	return ch;
+}
+int Addplanets(const char name[], bool ch)
+{
+	int B;
+why:
+	cout << "The number of Planets ";
+	cin >> B;
+	if (B < 0)
+		goto why;
+	Planets* planet = new Planets[B];
+	EnteringPlanet(planet, B, name);
+	delete[] planet;
+	if (B > 0)
+		ch = true;
+	return ch;
+}
+void zero(const char name[])
+{
+	bool ch = false;
+	int i = 0;
+	string answer;
+
+	while (i != 5)
+	{
+		system("cls");
+		menu();
+		cin >> i;
+		switch (i)
+		{
+		case 1:
+		{
+			ifstream PlanetList(name);
+			ch = view_file(PlanetList, ch);
+			system("pause");
+			break;
+		}
+		case 2:
+		{
+			ch = Addplanets(name, ch);
+			break;
+		}
+		case 3:
+		{
+			if (ch == false)
+			{
+				cout << "\n	View the file or add planets	\n";
+				system("pause");
+				break;
+			}
+			ifstream PlanetList(name);
+			findPlanet(PlanetList);
+			system("pause");
+			break;
+		}
+		case 4:
+		{
+			if (ch == false)
+			{
+				cout << "\n	View the file or add planets	\n";
+				system("pause");
+				break;
+			}
+			ifstream PlanetList(name);
+			deletePlanet(PlanetList, name);
+			system("pause");
+			break;
+		}
+		case 5:
+		{
+			cout << "\n    YOU SURE?    \n    Yes?(+)    No?(-)\n		";
+			cin >> answer;
+			if (answer == "Yes" || answer == "yes" || answer == "YES" || answer == "+")
+			{
+				cout << "\n\nGood bye!\n";
+				break;
+			}
+			else
+				i = 0;
+			break;
+		}
+		default:
+		{
+			break;
+		}
+
+		}
+	}
+}
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
+
+	//const char name[] = "D:\\Programmirovanie\\Universe.txt";
+	//zero(name);
+	//const int RANDOMNI=10;
+	//srand(time(NULL));
+	//int n = 100;
+	//for (int i=0; i < n; i++)
+	//{
+	//	int a, b, c;
+	//	a = rand() % RANDOMNI;
+	//	b = rand() % RANDOMNI;
+	//	c = rand() % RANDOMNI;
+	//	a_b_c(a, b, c);
+	//}
+	
+	//Tamogochi dog1;
+
+
+
+
+	int variant;
+	cout << "Chouse protection?\n-------------1-------------2-------------3-------------\n";
+	cin >> variant;
+	switch (variant)
+	{
+		system("cls");
+	case 1: 
+	{
+		string answer;
+		cout << "You now this dog?\n";
+		cout << "\n    YOU SURE?    \n    Yes?(+)    No?(-)\n		";
+		cin >> answer;
+		if (answer == "Yes" || answer == "yes" || answer == "YES" || answer == "+")
+		{
+
+			DOG dog1;
+			dog1.set_Dog_name();
+			dog1.set_owner_dog();
+			dog1.set_dog_size();
+			dog1.set_dog_color();
+			dog1.dog_info();
+		}
+		else
+		{
+			DOG_with_owner dog;
+			dog.set_dog_size();
+			dog.set_dog_color();
+			dog.stranger();
+		}
+
+		break;
+	}
+	case 2:
+	{
+		string answer;
+		cout << "You now this dog?\n";
+		cout << "\n    YOU SURE?    \n    Yes?(+)    No?(-)\n		";
+		cin >> answer;
+		if (answer == "Yes" || answer == "yes" || answer == "YES" || answer == "+")
+		{
+			OnlyPravateDOG dogP1;
+		}
+		else
+		{
+			OnlyPravateDOG_with_owner dogP2;
+		}
+		break;
+	}
+	case 3:
+	{
+		string answer;
+		cout << "You now this dog?\n";
+		cout << "\n    YOU SURE?    \n    Yes?(+)    No?(-)\n		";
+		cin >> answer;
+		if (answer == "Yes" || answer == "yes" || answer == "YES" || answer == "+")
+		{
+
+		}
+		else
+		{
+
+		}
+		break;
+	}
+	default:
+	{
+		break;
+	}
+
+	}
+}
