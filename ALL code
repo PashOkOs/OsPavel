@@ -99,7 +99,7 @@ void OnlyPravateDOG::dog_info()
 }
 void OnlyPravateDOG::set_dog_color()
 {
-	cout << " Write dog color ";
+	cout << " Write dog color, please ";
 	cin >> dog_color;
 }
 void OnlyPravateDOG::set_dog_size()
